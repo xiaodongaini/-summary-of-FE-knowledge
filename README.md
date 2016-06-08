@@ -90,4 +90,16 @@ for(var i = 0,len = arr1.length; i< len; i++){
 document.write(arr2); // 1,2,3,4,5,6
 ```
 
+### z-index 属性 ###
+
+z-index : auto | number
+z-index 属性设置元素的堆叠顺序，如果为正数，则离用户更近，为负数则表示离用户更远；
+拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面；
+z-index 仅能在定位元素上奏效（position 属性值为 relative 或 absolute 或 fixed的对象）。
+
+参考资料：
+[聂卫东-IE下z-index 的各种坑](http://www.cnblogs.com/Darren_code/archive/2012/03/05/z-index.html)
+[杜瑶-你需要了解的z-index世界](http://blog.doyoe.com/2014/01/21/css/你需要了解的z-index世界/)
+
+
 
