@@ -99,7 +99,37 @@ z-index 仅能在定位元素上奏效（position 属性值为 relative 或 abso
 
 参考资料：
 [聂卫东-IE下z-index 的各种坑](http://www.cnblogs.com/Darren_code/archive/2012/03/05/z-index.html)
+
 [杜瑶-你需要了解的z-index世界](http://blog.doyoe.com/2014/01/21/css/你需要了解的z-index世界/)
+
+### 解决 ie6、ie7下float为right换行的情况 ###
+
+遇到一个问题，float:right换行bug，情况是并列的几个块级元素如div和span，一些设置了左浮动一些设置右浮动，一行的宽度足够放下所有的块级元素，但此时ie6则显示右浮动的其中一块换行了
+
+```
+<div>
+	<span class="left">左边</span>
+	<span class="center">中间</span>
+	<span style="float: right" class="right">右边</span>
+</div>
+```
+
+.left和.center都没有 float 属性，然后在FireFox，google chrome及IE8等浏览器下都正常显示，可在Internet Explorer 6 下有bug：本来排一行的左边+中间+右边，可右边淘气的跳到了下一行。
+
+#### 解决方法： ####
+
+不用修改css什么的，只要把float的模块放到非float的前面即可。
+
+上面的html结构重排下序：
+
+```
+<div>
+	<span style="float: right" class="right">右边</span> 
+	<span class="left">左边</span> 
+	<span class="center">中间</span> 
+</div>
+````
+
 
 
 
