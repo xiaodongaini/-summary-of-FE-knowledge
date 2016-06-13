@@ -130,6 +130,12 @@ z-index 仅能在定位元素上奏效（position 属性值为 relative 或 abso
 </div>
 ````
 
+### 低版本 IE 使用insertBefore() 方法时需要第二个参数不为空 ###
+
+```
+var parent=document.getElementById(parentID);
+parent.insertBefore(child,(parent.hasChildNodes())? parent.childNodes[0]: null);
+```
 
 
 
