@@ -137,5 +137,77 @@ var parent=document.getElementById(parentID);
 parent.insertBefore(child,(parent.hasChildNodes())? parent.childNodes[0]: null);
 ```
 
+### JavaScript中对象类型检测 ###
+
+JS中有两种数据类型的值：基本数据类型和引用数据类型
+
+1. 基本数据类型：简单的数据段 存放在栈中 按值访问：**Undefined Null Boolean Number String**
+2. 引用数据类型：由多个值构成的对象 存放在堆中 按地址访问 **Object Array Function 等**
+
+#### 检测对象属于那种数据类型 ####
+
+#### typeof ####
+
+只能检测基本数据类型，不能检测引用数据类型
+
+#### instanceof ####
+
+1. 概述：instanceof 运算符可以用来判断某个构造函数的prototype属性是否存在另外一个要检测对象的原型链上
+2. 语法：object instanceof constructor
+3. 因为所有的实例都继承自Object, 所以object instanceof Object 返回皆为true
+注意：
+（1）如果表达式 obj instanceof Foo 返回true，则并不意味着该表达式会永远返回ture，因为Foo.prototype属性的值有可能会改变，改变之后的值很有可能不存在于obj的原型链上，这时原表达式的值就会成为false。
+
+#### constructor ####
+
+通过 obj.constructor 得到某个实例到对应的构造函数
+在修改了构造函数（A）原型链且没有显式的修改A.prototype.constructor的情况下，结果将不是我们想要的
+
+```
+function A(){};
+var a = new A();
+console.log(a.constructor);
+
+function B(){};
+
+A.prototype = new B();
+var a1 = new A();
+console.log(a1.constructor);
+
+A.prototype.constructor=A;
+
+console.log(a1.constructor);
+
+```
+
+#### {}.toString || Object.prototype.toString 返回一个代表该对象的字符串 ####
+
+```
+function A(){};
+var a = new A();
+var b = new Array();
+var c = 'abc';
+var d = 123;
+var e = new Date();
+
+console.log({}.toString.call(a));
+console.log({}.toString.call(b));
+console.log({}.toString.call(c));
+console.log({}.toString.call(d));
+console.log({}.toString.call(e));
+```
+输出：
+```
+[object Object]
+[object Array]
+[object String]
+[object Number]
+[object Date]
+```
+
+
+
+
+
 
 
