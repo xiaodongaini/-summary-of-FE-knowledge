@@ -205,6 +205,58 @@ console.log({}.toString.call(e));
 [object Date]
 ```
 
+### 使用rem设计移动端页面 ###
+
+#### 首先设置meta标签 ####
+
+```
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+```
+
+#### 以7.5为基准，设置 html 的 fontSize  ####
+
+```
+<script>
+	document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
+</script>
+```
+
+在 width=device-width;initial-scale=1 设置为 1 的情况下，iphone6 的宽度为750px, html 的 fontSize = 750/7.5=100;
+所以，div 的宽度为 2rem，为200px;
+
+在iphone5 中，fontSize = 640/7.5=85.33333333333333;所以 div 的宽度为2rem=170.666666;
+
+但是div所占的比例还是一样的，为2/7.5;
+
+```
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+	<style>
+	body{
+		margin: 0;
+		padding: 0;
+	}
+	.box{
+		width: 2rem;
+		height: 2rem;
+		background: red;
+	}
+	</style>
+</head>
+<body>
+
+	<div class="box"></div>
+
+	<script>
+	document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
+	</script>
+</body>
+</html>
+```
+
 
 
 
