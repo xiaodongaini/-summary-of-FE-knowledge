@@ -257,6 +257,43 @@ console.log({}.toString.call(e));
 </html>
 ```
 
+### 理解BFC(Block Formatting Context（块级格式化上下文）) ###
+
+Block Formatting Context（块级格式化上下文）是W3C CSS 2.1 规范中的一个概念，它决定了元素如何对其内容进行定位，以及与其他元素的关系和相互作用。
+
+简单来讲，我们可以把它理解为，*我们在进行盒模型布局的时候，如果一个元素符合了成为BFC的条件，该元素成为一个隔离了的独立容器，元素内部元素会垂直的沿着其父元素的边框排列，和外部元素互不影响 。比如浮动元素会触发BFC，浮动元素内部的子元素主要受到该浮动元素的影响，而两个浮动元素之间是互不影响的。*
+
+#### BFC规范中的定义 ####
+
+w3c规范对BFC的解释：
+　　浮动元素和绝对定位元素，不是块级盒子的块容器 （如 inline-blocks, table-cells, 和 table-captions），以及设置了overflow属性（除了visible）的块级盒子 ，都会为他们的内容创建新的BFC（块级格式上下文）。
+　　在BFC中，盒子从顶端开始垂直地 一个接一个地排列，两个盒子之间的垂直的间隙是由他们的margin 值所决定的。在一个BFC中，两个相邻的块级盒子的垂直外边距会产生折叠。
+　　在BFC中，每一个盒子的左外边缘（margin-left）会触碰到容器的左边缘(border-left)（对于从右到左的格式来说，则触碰到右边缘）。
+
+#### BFC 布局规则 ####
+
+- 内部的Box会在垂直方向，一个接一个地放置。
+- Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠
+- 每个元素的margin box的左边， 与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。
+- BFC的区域不会与float box重叠。
+- BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。
+- 计算BFC的高度时，浮动元素也参与计算
+
+#### 如何触发 BFC ####
+
+float 元素
+position（absolute，fixed）
+display (table-cell，table-caption，inline-block)
+overflow 除了visible 以外的值（hidden，auto，scroll ）
+fieldset元素
+早期IE的hasLayout会触发一个新的block formatting context
+
+#### BFC应用、作用和原理 ####
+
+[【深入BFC】 关于CSS中float布局，清除浮动，和margin合并的原理解析，解开你心中的那些困惑！](http://www.cnblogs.com/v10258/p/3530290.html)
+
+[BFC 神奇背后的原理](http://www.cnblogs.com/lhb25/p/inside-block-formatting-ontext.html)
+
 
 
 
