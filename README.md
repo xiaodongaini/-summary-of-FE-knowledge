@@ -397,6 +397,8 @@ functionName = function(){
   //
 }
 ```
+### bind()的用法 ###
+
 
 
 
