@@ -374,20 +374,30 @@ console.log(foo.x); // undefined
 解析地址：https://leozdgao.me/renew-js-assignment/
 
 ### JS函数声明和函数表达式的区别 ###
+
 函数声明:
+
+```
 function functionName(){  
   //
 }
+```
 函数表达式：
+```
 var functionName = function(){
   //
 } 
+```
+
 当使用函数声明的形式来定义函数时，可将调用语句写在函数声明之前，而函数表达式，这样做的话会报错。
 因为函数表达式等价于：
+```
 var functionName;
 functionName = function(){
   //
 }
+```
+
 
 
 
